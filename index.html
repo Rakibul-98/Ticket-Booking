@@ -26,7 +26,7 @@
                 <h1>discover <br> around the world</h1>
                 <p>Recognized for its world-class service, the airline has been named Sky track World's Best Low-Cost Airline 11 years in a row from 2009 to 2019 and World Travel Awards World's Leading Low-Cost Airline for eight consecutive years from 2013 to 2020.</p>
             </div>
-            <div class="booking-form">
+            <div id="booking-form" class="booking-form">
                 <h3>Booking Flights</h3>
                 <div class="input-group">
                     <label for="">Flying From</label>
@@ -49,22 +49,22 @@
                 <div class="input-group f-class">
                     <div>
                         <label for="">First Class ($150)</label>
-                        <input class="inp-style inp-width" type="number" name="" readonly>
+                        <input id="first-class-display" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <button class="button increase-button">+</button>
-                        <button class="button decrease-button">-</button>
+                        <button onclick="handleClass('first-class',true)" class="button increase-button">+</button>
+                        <button onclick="handleClass('first-class', false)" class="button decrease-button">-</button>
                     </div>
                 </div>
                 
                 <div class="input-group f-class">
                     <div>
                         <label for="">Economy ($100)</label>
-                        <input id="economy-display" class="inp-style inp-width" type="number" name="">
+                        <input id="economy-display" class="inp-style inp-width" type="number" name="" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <button id="economy-increase" class="button increase-button">+</button>
-                        <button class="button decrease-button">-</button>
+                        <button onclick="handleClass('economy',true)" class="button increase-button">+</button>
+                        <button onclick="handleClass('economy',false)" class="button decrease-button">-</button>
                     </div>
                 </div>
                 <div class="calculations">
@@ -73,7 +73,7 @@
                             <p>Subtotal</p>
                         </div>
                         <div class="right">
-                            <p>$500</p>
+                            <p>$<span id="sub-total">00</span></p>
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@
                             <p>Charge 10% VAT</p>
                         </div>
                         <div class="right">
-                            <p>$50</p>
+                            <p>$<span id="tax">00</span></p>
                         </div>
                     </div>
                     <hr>
@@ -91,12 +91,93 @@
                             <h4>Total</h4>
                         </div>
                         <div class="right">
-                            <p>$550</p>
+                            <p>$<span id="grand-total">00</span></p>
                         </div>
                     </div>
                 </div>
-                <button class="btn-style">Book Now</button>
+                <button onclick="handleBook()" class="btn-style">Book Now</button>
             </div>
+            
         </main>
+        <script>
+
+            function getTicketAmount(ticket) {
+                const ticketAmount = document.getElementById(ticket +"-display");
+                const ticketAmountNumber = parseInt(ticketAmount.value);
+                return ticketAmountNumber;
+            }
+
+            function handleClass(ticket, isIncrease) {
+                const ticketCount = getTicketAmount(ticket);
+                let ticketNewCount = ticketCount;
+                if (isIncrease==true) {
+                    ticketNewCount=ticketCount + 1;
+                }
+                if (isIncrease==false && ticketNewCount>0) {
+                    ticketNewCount=ticketCount - 1;
+                }
+                document.getElementById(ticket + "-display").value=ticketNewCount;
+                calculateSubTotal(ticket);
+            }
+            
+
+            function calculateSubTotal(ticket) {
+                const firstClass = getTicketAmount('first-class');
+                const economyClass = getTicketAmount('economy');
+
+                const ticketSubTotal = firstClass*150 + economyClass*100;
+                document.getElementById("sub-total").innerText=ticketSubTotal;
+
+                const tax=ticketSubTotal/10;
+                document.getElementById("tax").innerText=tax;
+
+                const grandTotal=ticketSubTotal+tax;
+                document.getElementById("grand-total").innerText=grandTotal;
+            }
+
+
+            
+
+    // adding function only first class
+
+            // function handleClass(product, isIncrease) {
+            //     const productDisplay = document.getElementById(product +'-display');
+            //     const productNumber = parseInt(productDisplay.value);
+            //     let productNewCount = productNumber;
+            //     if (isIncrease==true) {
+            //         productNewCount=productNumber + 1;
+            //     }
+            //     if (isIncrease==false && productNewCount>0) {
+            //         productNewCount=productNumber - 1;
+            //     }
+            //     productDisplay.value=productNewCount;
+            //     let productTotal=0;
+            //     if (product=='first-class') {
+            //         productTotal = productNewCount*150;
+            //         console.log(productTotal);
+            //     }
+            // }
+
+    //adding function for increase and decrease
+            // function handleFirstClass(isIncrease) {
+            //     const firstClassDisplay = document.getElementById("first-class-display");
+            //     const firstClassNumber = parseInt(firstClassDisplay.value);
+            //     let firstClassNewCount = firstClassNumber;
+            //     if (isIncrease==true) {
+            //         firstClassNewValue=firstClassNumber + 1;
+            //     }
+            //     if (isIncrease==false) {
+            //         firstClassNewValue=firstClassNumber - 1;
+            //         if (firstClassNewValue<0) {
+            //             firstClassNewValue=0;
+            //         }
+            //     }
+            //     firstClassDisplay.value=firstClassNewValue;
+            //     let firstClassTotal=firstClassNewValue*150;
+            //     console.log(firstClassTotal);
+            // }
+            
+
+        </script>
     </body>
 </html>
