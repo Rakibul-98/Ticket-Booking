@@ -7,7 +7,7 @@
 }
 body{
     font-family: 'Roboto', sans-serif;
-    background:url("images/bg.png");
+    background:url("images/bg.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
@@ -120,6 +120,9 @@ nav ul li a:hover, a.active{
 
 .decrease-button{
     background-color: rgb(243, 18, 48);
+}
+#animation{
+    display: none;
 }
 .btn-style{
     display: block;
