@@ -15,7 +15,7 @@
         <header class="container">
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a class="active" href="#">Sign Up</a></li>
@@ -99,7 +99,7 @@
                 <button onclick="handleBook()" class="btn-style">Book Now</button>
             </div>
             <div>
-                <iframe id="animation" src="https://giphy.com/embed/ei4juXBXLJuc2gBCgg" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/delta-travel-plane-flydelta-ei4juXBXLJuc2gBCgg">via GIPHY</a></p>
+                <iframe id="animation" src="https://giphy.com/embed/ei4juXBXLJuc2gBCgg" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
             </div>
         </main>
         <script>
@@ -142,47 +142,6 @@
                 document.getElementById("booking-form").style.display='none';
                 document.getElementById("animation").style.display='block';
             }
-
-            
-
-    // adding function only first class
-
-            // function handleClass(product, isIncrease) {
-            //     const productDisplay = document.getElementById(product +'-display');
-            //     const productNumber = parseInt(productDisplay.value);
-            //     let productNewCount = productNumber;
-            //     if (isIncrease==true) {
-            //         productNewCount=productNumber + 1;
-            //     }
-            //     if (isIncrease==false && productNewCount>0) {
-            //         productNewCount=productNumber - 1;
-            //     }
-            //     productDisplay.value=productNewCount;
-            //     let productTotal=0;
-            //     if (product=='first-class') {
-            //         productTotal = productNewCount*150;
-            //         console.log(productTotal);
-            //     }
-            // }
-
-    //adding function for increase and decrease
-            // function handleFirstClass(isIncrease) {
-            //     const firstClassDisplay = document.getElementById("first-class-display");
-            //     const firstClassNumber = parseInt(firstClassDisplay.value);
-            //     let firstClassNewCount = firstClassNumber;
-            //     if (isIncrease==true) {
-            //         firstClassNewValue=firstClassNumber + 1;
-            //     }
-            //     if (isIncrease==false) {
-            //         firstClassNewValue=firstClassNumber - 1;
-            //         if (firstClassNewValue<0) {
-            //             firstClassNewValue=0;
-            //         }
-            //     }
-            //     firstClassDisplay.value=firstClassNewValue;
-            //     let firstClassTotal=firstClassNewValue*150;
-            //     console.log(firstClassTotal);
-            // }
             
 
         </script>
